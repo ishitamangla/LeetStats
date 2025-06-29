@@ -39,12 +39,13 @@ const url = `https://leetcode-stats-api.herokuapp.com/${username}`;
 ## 📷 Screenshot
 
 ### ✅ Valid Username
-![Valid Username](image.png)
+![Valid Username](validUserName.png)
 
 ### ❌ Invalid Username
-![Invalid Username](invalidUsername.png)
+![Invalid Username](invalidUserName.png)
 
-
+### ❔ User Not Found
+![Valid Username](userNotFound.png)
 ---
 
 ## 🚀 How to Run the Project
