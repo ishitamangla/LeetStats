@@ -1,8 +1,10 @@
+
+    
 document.addEventListener("DOMContentLoaded",function(){
 
     const searchButton = document.getElementById("search-btn");
     const userNameInput = document.getElementById("user-input");
-    const statsContainer = document.querySelectorAll(".stats-container");
+    const statsContainer = document.querySelector(".stats-container");
     const easyProgressCircle = document.querySelector('.easy-progress');
     const mediumProgressCircle = document.querySelector('.medium-progress');
     const hardProgressCircle = document.querySelector('.hard-progress');
@@ -15,18 +17,31 @@ document.addEventListener("DOMContentLoaded",function(){
     function validateUsername(username){
         //trim: used to remove whitespace from both ends of a string
         if(username.trim() === ""){
-            alert("Username should not be empty");
+            statsContainer.style.display = "none";
+            showAlert("Username should not be empty","alert-danger");
             return false;
         }
         //regex: used to tell a format of input
         const regex = /^[a-zA-Z_][a-zA-Z0-9_-]{2,15}$/;
         const isMatching = regex.test(username);
         if(!isMatching){
-            alert("Invalid Username");
+            statsContainer.style.display = "none";
+            showAlert("Enter a valid username","alert-danger");
+            reload();
         }
         return isMatching;
     }
 
+    //show alert
+    function showAlert(msg,className){
+        let cont = document.querySelector("#alertid");
+        cont.className = `alert ${className}`
+        cont.textContent = msg;
+        setTimeout(() => {
+            cont.textContent = '';
+            cont.className = "alert";
+        }, 1500);
+    }
 
     async function fetchUserDetails(username){
         const url = `https://leetcode-stats-api.herokuapp.com/${username}`
@@ -40,24 +55,32 @@ document.addEventListener("DOMContentLoaded",function(){
             }
             
             const parsedData = await response.json();
-                if(parsedData.status = 'error'){
+                if(parsedData.message == 'user does not exist'){
                     statsContainer.style.display = "none";
+                    throw error;
                 }
             displayUserData(parsedData);
             console.log("Logging data : ",parsedData);
-
-
+            showAlert("User data found","alert-success");
+            
         }
         catch(error){
             statsContainer.innerHTML = `<p>${error.message}</p>`
+            userNameInput.value = "";
+            showAlert("User does not found reloading page...","alert-danger")
+            reload();
         }
         finally{
             searchButton.textContent = "Search";
             searchButton.disabled = false;
         }
     }
-
-
+//reload page
+function reload(){
+setTimeout(() => {
+            location.reload(); 
+            }, 1500);
+}
     function displayUserData(parsedData){
         const totalQues = parsedData.totalQuestions;
         const totalHardQues = parsedData.totalHard;
@@ -103,8 +126,7 @@ document.addEventListener("DOMContentLoaded",function(){
     })
 
 
-    
-
+})
 
 
 
