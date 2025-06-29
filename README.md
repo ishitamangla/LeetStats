@@ -39,7 +39,7 @@ const url = `https://leetcode-stats-api.herokuapp.com/${username}`;
 ## 📷 Screenshot
 
 ### ✅ Valid Username
-![Valid Username](validUsername.png)
+![Valid Username](image.png)
 
 ### ❌ Invalid Username
 ![Invalid Username](invalidUsername.png)
