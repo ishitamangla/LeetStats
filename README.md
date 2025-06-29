@@ -7,7 +7,7 @@ It fetches real-time data using the public LeetCode Stats API and presents it in
 
 ## 🔗 Live Demo
 
-[Click here to view the project](https://ishitamangla.github.io/leetstat/)
+[Click here to view the project](https://ishitamangla.github.io/LeetStats/)
 
 ## ✨ Features
 
