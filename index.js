@@ -96,9 +96,9 @@ setTimeout(() => {
 
 
         const cardData = [
-            {label:"Acceptance Rate",value:parsedData.data.acceptanceRate},
-            {label:"Ranking",value:parsedData.data.ranking},
-            {label:"Reputations",value:parsedData.data.reputation}
+            {label:"Acceptance Rate",value:parsedData.acceptanceRate},
+            {label:"Ranking",value:parsedData.ranking},
+            {label:"Reputations",value:parsedData.reputation}
         ];
 
         cardStatsContainer.innerHTML = cardData.map(
