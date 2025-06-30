@@ -96,9 +96,12 @@ setTimeout(() => {
         updateProgress(solvedMediumQues,totalMediumQues,mediumLabel,mediumProgressCircle);
         updateProgress(solvedHardQues,totalHardQues,hardLabel,hardProgressCircle);
 
+        const allStats = parsedData.totalSubmissions.find(item => item.difficulty === "All");
+        const totalSubmissions = allStats ? allStats.submissions : 1;
+        const acceptanceRate = ((solvedTotal / totalSubmissions) * 100).toFixed(2) + "%";
 
         const cardData = [
-            {label:"Acceptance Rate",value:parsedData.acceptanceRate},
+            {label:"Acceptance Rate",value:acceptanceRate},
             {label:"Ranking",value:parsedData.ranking},
             {label:"Reputations",value:parsedData.reputation}
         ];
