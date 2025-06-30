@@ -55,12 +55,12 @@ document.addEventListener("DOMContentLoaded",function(){
             }
             
             const parsedData = await response.json();
-                if (!parsedData.data || parsedData.message === 'User not found') {
+                if (!parsedData || Object.keys(parsedData).length === 0) {
                     statsContainer.style.display = "none";
                     throw new Error("User does not exist");
                 }
 
-            displayUserData(parsedData.data);
+            displayUserData(parsedData);
             console.log("Logging data : ",parsedData.data);
             showAlert("User data found","alert-success");
             
