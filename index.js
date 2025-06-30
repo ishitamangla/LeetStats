@@ -44,8 +44,7 @@ document.addEventListener("DOMContentLoaded",function(){
     }
 
     async function fetchUserDetails(username){
-        const url = `https://leetcode-api-faisalshohag.vercel.app/<username>
-`;
+        const url = `https://leetcode-api-faisalshohag.vercel.app/${username}`;
         try{
             searchButton.textContent = "searching....";
             searchButton.disabled = true;
