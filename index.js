@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded",function(){
     }
 
     async function fetchUserDetails(username){
-        const url = `https://leetcode-stats-api.herokuapp.com/${username}`
+        const url = `https://leetclone.vercel.app/${username}`;
         try{
             searchButton.textContent = "searching....";
             searchButton.disabled = true;
@@ -55,12 +55,12 @@ document.addEventListener("DOMContentLoaded",function(){
             }
             
             const parsedData = await response.json();
-                if(parsedData.message == 'user does not exist'){
+                if(parsedData.status === 404){
                     statsContainer.style.display = "none";
-                    throw error;
+                    throw new Error("User Does not Exist");
                 }
-            displayUserData(parsedData);
-            console.log("Logging data : ",parsedData);
+            displayUserData(parsedData.data);
+            console.log("Logging data : ",parsedData.data);
             showAlert("User data found","alert-success");
             
         }
@@ -96,9 +96,9 @@ setTimeout(() => {
 
 
         const cardData = [
-            {label:"Acceptance Rate",value:parsedData.acceptanceRate},
-            {label:"Ranking",value:parsedData.ranking},
-            {label:"Reputations",value:parsedData.reputation}
+            {label:"Acceptance Rate",value:parsedData.data.acceptanceRate},
+            {label:"Ranking",value:parsedData.data.ranking},
+            {label:"Reputations",value:parsedData.data.reputation}
         ];
 
         cardStatsContainer.innerHTML = cardData.map(
