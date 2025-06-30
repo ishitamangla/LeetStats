@@ -33,7 +33,7 @@ This project uses the public **LeetCode Stats API** to fetch a user's problem-so
 
  **API Endpoint Format**:
 
-const url = `https://leetcode-stats-api.herokuapp.com/${username}`;
+const url = `https://leetcode-api-faisalshohag.vercel.app/${username}`;
 
 
 ## 📷 Screenshot
