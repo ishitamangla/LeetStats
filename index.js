@@ -59,8 +59,8 @@ document.addEventListener("DOMContentLoaded",function(){
                     statsContainer.style.display = "none";
                     throw new Error("User Does not Exist");
                 }
-            displayUserData(parsedData);
-            console.log("Logging data : ",parsedData);
+            displayUserData(parsedData.data);
+            console.log("Logging data : ",parsedData.data);
             showAlert("User data found","alert-success");
             
         }
