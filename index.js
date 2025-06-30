@@ -44,7 +44,8 @@ document.addEventListener("DOMContentLoaded",function(){
     }
 
     async function fetchUserDetails(username){
-        const url = `https://leetclone.vercel.app/${username}`;
+        const url = `https://leetcode-api-faisalshohag.vercel.app/<username>
+`;
         try{
             searchButton.textContent = "searching....";
             searchButton.disabled = true;
@@ -59,8 +60,8 @@ document.addEventListener("DOMContentLoaded",function(){
                     statsContainer.style.display = "none";
                     throw new Error("User Does not Exist");
                 }
-            displayUserData(parsedData.data);
-            console.log("Logging data : ",parsedData.data);
+            displayUserData(parsedData);
+            console.log("Logging data : ",parsedData);
             showAlert("User data found","alert-success");
             
         }
