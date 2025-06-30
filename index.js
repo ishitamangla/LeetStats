@@ -55,10 +55,11 @@ document.addEventListener("DOMContentLoaded",function(){
             }
             
             const parsedData = await response.json();
-                if(parsedData.status === 404){
+                if (!parsedData.data || parsedData.message === 'User not found') {
                     statsContainer.style.display = "none";
-                    throw new Error("User Does not Exist");
+                    throw new Error("User does not exist");
                 }
+
             displayUserData(parsedData.data);
             console.log("Logging data : ",parsedData.data);
             showAlert("User data found","alert-success");
